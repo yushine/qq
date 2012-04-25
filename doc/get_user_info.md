@@ -5,7 +5,7 @@ get\_user\_info
     
 * 请求的地址
     
-    https://graph.qq.com/user/get\_user\_info 
+    https://graph.qq.com/user/get_user_info 
 
 * 支持的格式
 
@@ -21,7 +21,7 @@ get\_user\_info
 
 * 请求的示例
 
-    https://graph.qq.com/user/get\_user\_info?access_token=\*\*\*\*\*\*\*\*\*\*&oauth_consumer_key=12345&openid=\*\*\*\*\*\*\*\*\*\*&format=json
+    https://graph.qq.com/user/get_user_info?access_token=**********&oauth_consumer_key=12345&openid=**********&format=json
 
 * 返回参数说明
 
@@ -33,9 +33,9 @@ get\_user\_info
 
     figureurl: 大小为30×30像素的头像URL
 
-    figureurl\_1: 大小为50×50像素的头像URL
+    figureurl_1: 大小为50×50像素的头像URL
 
-    figureurl\_2: 大小为100×100像素的头像URL
+    figureurl_2: 大小为100×100像素的头像URL
 
     gender: 性别。如果获取不到则默认返回“男”
 
