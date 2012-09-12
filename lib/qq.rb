@@ -35,9 +35,10 @@ class Qq
 	#获取令牌:认证码code=params[:code],httpstat=request.env['HTTP_CONNECTION']
 	def get_token(code,httpstat)
 		#获取令牌
-		@token=open(TOKENURL + 'grant_type=authorization_code&client_id=' + APPID + '&client_secret=' + APPKEY + '&code=' + code + '&state='+ httpstat + REDURL).read[/(?<=access_token=)\w{32}/]
+		@token=open(TOKENURL + 'grant_type=authorization_code&client_id=' + APPID + '&client_secret=' + APPKEY + '&code=' + code + '&state='+ httpstat + REDURL,
+					:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read[/(?<=access_token=)\w{32}/]
 		#获取Openid
-		@openid=open(OPENIDURL + @token).read[/\w{32}/]		
+		@openid=open(OPENIDURL + @token,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read[/\w{32}/]		
 		#获取通用验证参数
 		@auth='access_token=' + @token + '&oauth_consumer_key=' + APPID + '&openid=' + @openid
 	end
@@ -58,7 +59,7 @@ class Qq
 	
 	#获取用户信息:比如figureurl,nickname
 	def get_user_info(auth)
-		MultiJson.decode(open(GETUSERINFOURL + auth).read.force_encoding('utf-8'))
+		MultiJson.decode(open(GETUSERINFOURL + auth,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read.force_encoding('utf-8'))
 	end
 
 	#发表一条说说到QQ空间
@@ -76,7 +77,7 @@ class Qq
 	#验证登录的用户是否为某个认证空间的粉丝
 	#page_id:认证空间的QQ号码,比如706290240
 	def check_page_fans(auth,page_id)
-		MultiJson.decode(open(CHECKPAGEFANSURL + auth + '&page_id=' + page_id).read.force_encoding('utf-8'))
+		MultiJson.decode(open(CHECKPAGEFANSURL + auth + '&page_id=' + page_id,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read.force_encoding('utf-8'))
 	end
 	
 	#发表一条微博信息到腾讯微博
@@ -112,28 +113,29 @@ class Qq
 				 						   '&pageflag=' + pageflag +
 				 						   '&pagetime=' + pagetime +
 				 						   '&reqnum=' + reqnum +
-				 						   '&twitterid=' + twitterid).read)
+				 						   '&twitterid=' + twitterid,
+				 						   :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read)
 	end
 
 	#获取腾讯微博登录用户的用户资料
 	def get_info(auth)
-		MultiJson.decode(open(GETINFOURL + auth).read.force_encoding('utf-8'))
+		MultiJson.decode(open(GETINFOURL + auth,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read.force_encoding('utf-8'))
 	end
 
 	#获取腾讯微博其他用户详细信息
 	#name=其他用户账号名或openid,格式为name=peter或fopenid=******
 	def get_other_info(auth,name)
-		MultiJson.decode(open(GETOTHERINFOURL + auth + '&' + name).read.force_encoding('utf-8'))			
+		MultiJson.decode(open(GETOTHERINFOURL + auth + '&' + name,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read.force_encoding('utf-8'))			
 	end
 
 	#获取登录用户的听众列表
 	def get_fanslist(auth,reqnum,startindex,mode,install)
-		MultiJson.decode(open(GETFANSLISTURL + auth + '&reqnum=' + reqnum + '&startindex=' + startindex + '&mode=' + mode + '&install=' + install))
+		MultiJson.decode(open(GETFANSLISTURL + auth + '&reqnum=' + reqnum + '&startindex=' + startindex + '&mode=' + mode + '&install=' + install,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
 	end
 
 	#获取登录用户收听的人的列表
 	def get_idollist(auth,reqnum,startindex,install)
-		MultiJson.decode(open(GETIDOLLISTURL + auth + '&reqnum=' + reqnum + '&startindex=' + startindex + '&install=' + install))
+		MultiJson.decode(open(GETIDOLLISTURL + auth + '&reqnum=' + reqnum + '&startindex=' + startindex + '&install=' + install,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
 	end
 
 	#收听腾讯微博上的用户
