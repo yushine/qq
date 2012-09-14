@@ -3,7 +3,7 @@ QQ Connect SDK for Ruby On Rails
     
 ###安装:
     
-`gem install qq`
+覆盖lib文件夹
 
 ###使用:
 

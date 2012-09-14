@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name             = 'qq'
-  s.version          = '0.0.3'
+  s.version          = '0.0.4'
   s.summary          = "QQ Connect SDK 4 Ruby/Rails"
 	s.description			 = "It's a simple way to connect to QQ Connect"
   s.author           = '046569'
