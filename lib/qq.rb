@@ -36,11 +36,11 @@ class Qq
 	def get_token(code,httpstat)
 		#获取令牌
 		@token=open(TOKENURL + 'grant_type=authorization_code&client_id=' + APPID + '&client_secret=' + APPKEY + '&code=' + code + '&state='+ httpstat + REDURL,
-					:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read[/(?<=access_token=)\w{32}/]
+					:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read[/(?<=access_token=)\w{32}/] || ''
 		#获取Openid
-		@openid=open(OPENIDURL + @token.to_s,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read[/\w{32}/]		
+		@openid=open(OPENIDURL + @token,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE).read[/\w{32}/]		
 		#获取通用验证参数
-		@auth='access_token=' + @token.to_s + '&oauth_consumer_key=' + APPID + '&openid=' + @openid.to_s
+		@auth='access_token=' + @token + '&oauth_consumer_key=' + APPID + '&openid=' + @openid
 	end
 	
 	#post包的通用模版,用于没有附件的情况
