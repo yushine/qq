@@ -3,7 +3,13 @@ QQ Connect SDK for Ruby On Rails
     
 ###安装:
     
-覆盖lib文件夹
+在你的Gemfile里新增一行
+
+`gem 'qq', :git => 'git://github.com/046569/qq.git'`
+
+然后
+
+`bundle install`
 
 ###使用:
 
