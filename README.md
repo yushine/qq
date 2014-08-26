@@ -19,18 +19,11 @@ QQ Connect SDK for Ruby On Rails
 
 ### 使用:
 
-在你喜欢的地方定义:
-
-`APPID='你的ID'`
-
-`APPKEY='你的key'`
-
-`REDURL='&redirect_uri=你的跳转地址'`
 
 回调页示例(获取用户昵称)：
 
 ```Ruby
-user=Qq.new(params[:code],request.env['HTTP_CONNECTION'])
+user=Qq.new(params[:code],redirect_uri,appid,appkey)
 user.get_user_info('https://graph.qq.com/user/get_user_info')['nickname']
 ```
 
