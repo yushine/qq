@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
 	s.name             = 'qq'
-	s.version          = '0.2.1'
+	s.version          = '0.3.1'
 	s.summary          = "QQ Connect SDK 4 Ruby/Rails"
 	s.description	   = "It's a simple way to connect to QQ Connect"
-	s.authors          = ['046569']
-	s.email            = '046569@gmail.com'
+	s.authors          = ['infinityBlue']
+	s.email            = 'infinityBlue@163.com'
 	s.files            = ["lib/qq.rb"]
-	s.homepage         = 'https://github.com/046569/qq'
+	s.homepage         = 'https://github.com/infinityBlue/qq'
 	s.require_paths    << 'lib'
 	s.license          = 'MIT'
 end
