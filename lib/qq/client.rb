@@ -15,7 +15,7 @@ module QQ
     def authorize_url(params={})
       params[:client_id] = @id unless params[:client_id]
       params[:response_type] = 'code' unless params[:response_type]
-      params[:redirect_uri] = "mirugo.com/qq/callback" unless params[:redirect_uri]
+      params[:redirect_uri] = QQ::Config.redirect_uri unless params[:redirect_uri]
       super
     end
   end
