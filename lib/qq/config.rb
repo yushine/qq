@@ -1,20 +1,20 @@
-module Qq
+module QQ
   module Config
 
     def self.appid=(val)
-      @@api_key = val
+      @@appid = val
     end
 
     def self.appid
-      @@api_key
+      @@appid
     end
 
     def self.appkey=(val)
-      @@api_secret = val
+      @@appkey = val
     end
 
     def self.appkey
-      @@api_secret
+      @@appkey
     end
 
     def self.redirect_uri=(val)
