@@ -11,23 +11,35 @@ QQ Connect SDK for Ruby On Rails
     
 在你的Gemfile里新增一行
 
-`gem 'qq', :git => 'git://github.com/046569/qq.git'`
+`gem 'qq', :git => 'git://github.com/infinityBlue/qq.git'`
 
 然后
 
 `bundle install`
 
 ### 使用:
-
-
-回调页示例(获取用户昵称)：
-
+配置
 ```Ruby
-user=Qq.new(params[:code],redirect_uri,appid,appkey)
-user.get_user_info('https://graph.qq.com/user/get_user_info')['nickname']
+#config/initializer/qq.rb
+QQ::Config.appid = xxx
+QQ::Config.appkey = xxx
+QQ::Config.redirect_uri = xxx
 ```
 
-相关参数请查阅[QQ互联开放平台](http://connect.qq.com/intro/login/)
+跳转至授权页获取code
+```Ruby
+client = QQ::Client.new
+redirect_to client.authorize_url
+```
+回调页使用code获取用户信息：
+
+```Ruby
+user=QQ::User.new(params[:code])
+user.name
+user.avatar
+user.openid
+```
+
 
 
 ### 授权:
