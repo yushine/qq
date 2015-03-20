@@ -1,6 +1,5 @@
 module QQ
   class Client < OAuth2::Client
-    attr_reader :openid
     attr_accessor :access_token
 
     def initialize(client_id='', client_secret='', opts={}, &block)
@@ -18,10 +17,6 @@ module QQ
       params[:response_type] = 'code' unless params[:response_type]
       params[:redirect_uri] = "mirugo.com/qq/callback" unless params[:redirect_uri]
       super
-    end
-
-    def user(code)
-      @user || QQ::User.new(code)
     end
   end
 end
