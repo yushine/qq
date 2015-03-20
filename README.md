@@ -20,7 +20,7 @@ QQ Connect SDK for Ruby On Rails
 ### 使用:
 配置
 ```Ruby
-#config/initializer/qq.rb
+#config/initializers/qq.rb
 QQ::Config.appid = xxx
 QQ::Config.appkey = xxx
 QQ::Config.redirect_uri = xxx
